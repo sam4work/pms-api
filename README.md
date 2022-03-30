@@ -1,24 +1,132 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Project Title
 
-## About Laravel
+This simple api that support Sanctum Authentication via Laravel Breeze.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Acknowledgements
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
+- [Awesome README](https://github.com/matiassingers/awesome-readme)
+- [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
+- [Laravel Docs](https://laravel.com/docs/9.x)
+## Authors
+- [@sam4work](https://github.com/sam4work)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Project Settings
+## Documentation & Reference
+
+Laravel [Documentation](https://laravel.com/docs/9.x)
+
+
+## Tech Stack
+
+**Server:** Laravel v8+, MySQL v8.0+
+
+
+## Deployment
+
+To deploy this project run
+
+
+```bash
+  git clone https://github.com/sam4work/pms-api.git
+```
+
+```bash
+  cd pms-api
+```
+
+```bash
+  composer install
+```
+
+```bash
+  php atisan breeze:install api
+```
+
+```bash
+  php artisan migrate --seed 
+```
+
+Open .env File and add the following. Handles cors for your client request
+```
+  FRONTEND_URL=http://{domain}:{port} //localhost:5555
+```
+
+## API Reference
+
+#### Create customer
+
+```http
+  POST /api/customers/store
+```
+
+| Request | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `first_name`| `string` | **Required**. Customer First name|
+| `last_name`| `string` | **Required**. Customer Second Name|
+| `isp_code`| `digits` | **Required**. Service Provider Code|
+| `phone_number`| `digits` | **Required**. Seven Digit phone number|
+| `ghana_card_no`| `digits` | **Required**. 6 digit unique number|
+| `owner`| `string` | **Required**. If Customer Owners the Phone Number|
+| `service_type`| `string` | **Required**. ENUM POSTPAID or PREPAID|
+
+
+
+#### Get all customers
+
+```http
+  GET /api/customers
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `search(optional)` |  `string`| Search For customers |
+
+#### Get customer
+
+```http
+  GET /api/customers/${id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of customer to fetch |
+
+
+
+
+#### Delete customer
+
+```http
+  Delete /api/customers/${id}/destroy
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`| `int` | **Required**. Customer Unique ID |
+
+
+
+#### Update customer (?)
+
+```http
+  PATCH /api/customers/${id}/update
+```
+
+| Request | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `first_name`| `string` | **Required**. Customer First name|
+| `last_name`| `string` | **Required**. Customer Second Name|
+| `isp_code`| `digits` | **Required**. Service Provider Code|
+| `phone_number`| `digits` | **Required**. Seven Digit phone number|
+| `ghana_card_no`| `digits` | **Required**. 6 digit unique number|
+| `owner`| `string` | **Required**. If Customer Owners the Phone Number|
+
+
+## Know Issues
+Update Customer Records
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
